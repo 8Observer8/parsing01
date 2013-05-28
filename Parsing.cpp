@@ -192,36 +192,93 @@ bool CParsing::fillPackages(const std::vector<std::string>& storageBufferArr,
     return fillingIsCompeted;
 }
 
-void CParsing::storage(std::vector<std::string>& storageBufferArr,
+bool CParsing::storage(std::vector<std::string>& storageBufferArr,
         std::vector<std::string>& inputBufferArr) {
-//    // Save the last line of the buffer storage array
-//    std::string endStringOfStorage = m_storageBufferArr.back();
-//
-//    // Is the last line of the storage buffer array completed
-//    // If so, copy the input buffer array to the storage buffer array
-//    if (endStringOfStorage != "") {
-//        for (unsigned int i = 0; i < bufferArr.size(); i++) {
-//            //m_storageBufferArr.pop_back();
-//            m_storageBufferArr.push_back(bufferArr[i]);
-//        }
-//    } else {
-//        m_storageBufferArr.back() += bufferArr.front();
-//        for (unsigned i = 1; i < bufferArr.size(); i++) {
-//            m_storageBufferArr.push_back(bufferArr[i]);
-//        }
-//        // Otherwise connect two unfinished buffer
-//        // Extract an unfinished line from the input buffer array
-//        //        std::string endStringOfInputBuffer = bufferArr.back();
-//        //        bufferArr.pop_back();
-//        //        // Restore the unfinished line in a storage buffer array
-//        //        std::vector<std::string>::iterator itEndOfStorage =
-//        //                m_storageBufferArr.end();
-//        //        *(itEndOfStorage - 1) += endStringOfInputBuffer;
-//        //        std::string testString = *(itEndOfStorage - 1);
-//        //        for (unsigned int i = 0; i < bufferArr.size(); i++) {
-//        //            m_storageBufferArr.push_back(bufferArr[i]);
-//        //        }
-//    }
+    //    // Save the last line of the buffer storage array
+    //    std::string endStringOfStorage = m_storageBufferArr.back();
+    //
+    //    // Is the last line of the storage buffer array completed
+    //    // If so, copy the input buffer array to the storage buffer array
+    //    if (endStringOfStorage != "") {
+    //        for (unsigned int i = 0; i < bufferArr.size(); i++) {
+    //            //m_storageBufferArr.pop_back();
+    //            m_storageBufferArr.push_back(bufferArr[i]);
+    //        }
+    //    } else {
+    //        m_storageBufferArr.back() += bufferArr.front();
+    //        for (unsigned i = 1; i < bufferArr.size(); i++) {
+    //            m_storageBufferArr.push_back(bufferArr[i]);
+    //        }
+    //        // Otherwise connect two unfinished buffer
+    //        // Extract an unfinished line from the input buffer array
+    //        //        std::string endStringOfInputBuffer = bufferArr.back();
+    //        //        bufferArr.pop_back();
+    //        //        // Restore the unfinished line in a storage buffer array
+    //        //        std::vector<std::string>::iterator itEndOfStorage =
+    //        //                m_storageBufferArr.end();
+    //        //        *(itEndOfStorage - 1) += endStringOfInputBuffer;
+    //        //        std::string testString = *(itEndOfStorage - 1);
+    //        //        for (unsigned int i = 0; i < bufferArr.size(); i++) {
+    //        //            m_storageBufferArr.push_back(bufferArr[i]);
+    //        //        }
+    //    }
+}
+
+int CParsing::countTheCommasInString(std::string str) {
+    int counterOfCommas = 0;
+    std::string searchString = ",";
+
+    std::size_t found = str.find(searchString);
+
+    while (found != std::string::npos) {
+        counterOfCommas++;
+        found = str.find(searchString, found+1);
+        if (counterOfCommas > 100) {
+            return -1;
+        }
+    }
+
+    return counterOfCommas;
+}
+
+bool CParsing::checkTheIntegrityOfPackages(std::vector<std::string>& storageBufferArr,
+        std::vector<std::string>& inputBufferArr) {
+
+    // Storage buffer is empty
+    if (storageBufferArr.empty()) {
+        return false;
+    }
+
+    // Input buffer is empty
+    if (inputBufferArr.empty()) {
+        return false;
+    }
+
+    // No extension for the storage buffer
+    if (storageBufferArr.back() == "") {
+        std::string beginning = storageBufferArr[0].substr(0, 3);
+        if (beginning != "$GP") {
+            return false;
+        }
+    }
+
+    // In storage buffer is not empty line at the end
+    if (storageBufferArr.back() != "") {
+        std::string beginning = storageBufferArr[0].substr(0, 3);
+        if (beginning != "$GP") {
+            return false;
+        }
+    }
+
+    // In input buffer is not empty line at the end
+    if (inputBufferArr.back() != "") {
+        std::string beginning = storageBufferArr[0].substr(0, 3);
+        if (beginning != "$GP") {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 bool CParsing::processData(std::vector<std::string>& GGABuffer,

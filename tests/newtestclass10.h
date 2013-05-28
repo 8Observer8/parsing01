@@ -13,8 +13,10 @@
 class newtestclass10 : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(newtestclass10);
 
-    CPPUNIT_TEST(testMethod);
-    CPPUNIT_TEST(testFailedMethod);
+    CPPUNIT_TEST(testStorage_storageBufferIncomplete);
+    CPPUNIT_TEST(testStorage_inputBufferIsIncomplete);
+    CPPUNIT_TEST(testStorage_inputBufferAndStorageBufferIsIncomplete);
+    CPPUNIT_TEST(failedTestStorage_noContinuationOfThePackageForTheStorageBuffer);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -25,8 +27,10 @@ public:
     void tearDown();
 
 private:
-    void testMethod();
-    void testFailedMethod();
+    void testStorage_storageBufferIncomplete();
+    void testStorage_inputBufferIsIncomplete();
+    void testStorage_inputBufferAndStorageBufferIsIncomplete();
+    void failedTestStorage_noContinuationOfThePackageForTheStorageBuffer();
 };
 
 #endif	/* NEWTESTCLASS10_H */

@@ -51,7 +51,10 @@ TESTFILES= \
 	${TESTDIR}/TestFiles/f7 \
 	${TESTDIR}/TestFiles/f8 \
 	${TESTDIR}/TestFiles/f9 \
-	${TESTDIR}/TestFiles/f3
+	${TESTDIR}/TestFiles/f3 \
+	${TESTDIR}/TestFiles/f10 \
+	${TESTDIR}/TestFiles/f11 \
+	${TESTDIR}/TestFiles/f12
 
 # C Compiler Flags
 CFLAGS=`cppunit-config --cflags` 
@@ -127,6 +130,18 @@ ${TESTDIR}/TestFiles/f9: ${TESTDIR}/tests/newtestclass8.o ${TESTDIR}/tests/newte
 ${TESTDIR}/TestFiles/f3: ${TESTDIR}/_ext/2083163140/newtestclass9.o ${TESTDIR}/_ext/2083163140/newtestrunner9.o ${OBJECTFILES:%.o=%_nomain.o}
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f3 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
+
+${TESTDIR}/TestFiles/f10: ${TESTDIR}/_ext/2083163140/newtestclass10.o ${TESTDIR}/_ext/2083163140/newtestrunner10.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f10 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
+
+${TESTDIR}/TestFiles/f11: ${TESTDIR}/_ext/2083163140/newtestclass11.o ${TESTDIR}/_ext/2083163140/newtestrunner11.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f11 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
+
+${TESTDIR}/TestFiles/f12: ${TESTDIR}/_ext/2083163140/newtestclass12.o ${TESTDIR}/_ext/2083163140/newtestrunner12.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f12 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
 
 
 ${TESTDIR}/tests/newtestclass1.o: tests/newtestclass1.cpp 
@@ -237,6 +252,42 @@ ${TESTDIR}/_ext/2083163140/newtestrunner9.o: /D/Documents/NetBeansProjects/Cpp/p
 	$(COMPILE.cc) -O2 `cppunit-config --cflags`   `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/_ext/2083163140/newtestrunner9.o /D/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestrunner9.cpp
 
 
+${TESTDIR}/_ext/2083163140/newtestclass10.o: /D/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass10.cpp 
+	${MKDIR} -p ${TESTDIR}/_ext/2083163140
+	${RM} $@.d
+	$(COMPILE.cc) -O2 `cppunit-config --cflags`   `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/_ext/2083163140/newtestclass10.o /D/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass10.cpp
+
+
+${TESTDIR}/_ext/2083163140/newtestrunner10.o: /D/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestrunner10.cpp 
+	${MKDIR} -p ${TESTDIR}/_ext/2083163140
+	${RM} $@.d
+	$(COMPILE.cc) -O2 `cppunit-config --cflags`   `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/_ext/2083163140/newtestrunner10.o /D/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestrunner10.cpp
+
+
+${TESTDIR}/_ext/2083163140/newtestclass11.o: /D/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass11.cpp 
+	${MKDIR} -p ${TESTDIR}/_ext/2083163140
+	${RM} $@.d
+	$(COMPILE.cc) -O2 `cppunit-config --cflags`   `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/_ext/2083163140/newtestclass11.o /D/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass11.cpp
+
+
+${TESTDIR}/_ext/2083163140/newtestrunner11.o: /D/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestrunner11.cpp 
+	${MKDIR} -p ${TESTDIR}/_ext/2083163140
+	${RM} $@.d
+	$(COMPILE.cc) -O2 `cppunit-config --cflags`   `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/_ext/2083163140/newtestrunner11.o /D/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestrunner11.cpp
+
+
+${TESTDIR}/_ext/2083163140/newtestclass12.o: /D/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass12.cpp 
+	${MKDIR} -p ${TESTDIR}/_ext/2083163140
+	${RM} $@.d
+	$(COMPILE.cc) -O2 `cppunit-config --cflags`   `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/_ext/2083163140/newtestclass12.o /D/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass12.cpp
+
+
+${TESTDIR}/_ext/2083163140/newtestrunner12.o: /D/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestrunner12.cpp 
+	${MKDIR} -p ${TESTDIR}/_ext/2083163140
+	${RM} $@.d
+	$(COMPILE.cc) -O2 `cppunit-config --cflags`   `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/_ext/2083163140/newtestrunner12.o /D/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestrunner12.cpp
+
+
 ${OBJECTDIR}/Parsing_nomain.o: ${OBJECTDIR}/Parsing.o Parsing.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/Parsing.o`; \
@@ -276,6 +327,9 @@ ${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.cpp
 	    ${TESTDIR}/TestFiles/f8 || true; \
 	    ${TESTDIR}/TestFiles/f9 || true; \
 	    ${TESTDIR}/TestFiles/f3 || true; \
+	    ${TESTDIR}/TestFiles/f10 || true; \
+	    ${TESTDIR}/TestFiles/f11 || true; \
+	    ${TESTDIR}/TestFiles/f12 || true; \
 	else  \
 	    ./${TEST} || true; \
 	fi

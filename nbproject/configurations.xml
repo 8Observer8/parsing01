@@ -92,6 +92,30 @@
         <itemPath>D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass9.h</itemPath>
         <itemPath>D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestrunner9.cpp</itemPath>
       </logicalFolder>
+      <logicalFolder name="f10"
+                     displayName="Test 10 testStorage"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass10.cpp</itemPath>
+        <itemPath>D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass10.h</itemPath>
+        <itemPath>D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestrunner10.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f11"
+                     displayName="Test 11 testCheckTheIntegrityOfPackages"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass11.cpp</itemPath>
+        <itemPath>D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass11.h</itemPath>
+        <itemPath>D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestrunner11.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f12"
+                     displayName="Test 12 TestCountTheCommasInString"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass12.cpp</itemPath>
+        <itemPath>D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass12.h</itemPath>
+        <itemPath>D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestrunner12.cpp</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -137,6 +161,36 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass10.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass10.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass11.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass11.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass12.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass12.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass9.cpp"
             ex="false"
             tool="1"
@@ -148,6 +202,21 @@
             flavor2="0">
       </item>
       <item path="D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestrunner.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestrunner10.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestrunner11.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestrunner12.cpp"
             ex="false"
             tool="1"
             flavor2="0">
@@ -172,6 +241,48 @@
           <output>${TESTDIR}/TestFiles/f1</output>
           <linkerLibItems>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f10">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f10</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f11">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f11</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f12">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f12</output>
+          <linkerLibItems>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
@@ -372,6 +483,36 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass10.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass10.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass11.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass11.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass12.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass12.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestclass9.cpp"
             ex="false"
             tool="1"
@@ -383,6 +524,21 @@
             flavor2="0">
       </item>
       <item path="D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestrunner.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestrunner10.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestrunner11.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/Documents/NetBeansProjects/Cpp/parsingNMEAData/tests/newtestrunner12.cpp"
             ex="false"
             tool="1"
             flavor2="0">
@@ -407,6 +563,48 @@
           <output>${TESTDIR}/TestFiles/f1</output>
           <linkerLibItems>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f10">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f10</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f11">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f11</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f12">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f12</output>
+          <linkerLibItems>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>

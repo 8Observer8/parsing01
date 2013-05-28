@@ -114,9 +114,29 @@ public:
      * 
      * @param storageBufferArr The storage buffer array
      * @param inputBufferArr The input buffer array
+     * @return If cannot storage data, the function returns false
      */
-    void storage(std::vector<std::string>& storageBufferArr,
+    bool storage(std::vector<std::string>& storageBufferArr,
             std::vector<std::string>& inputBufferArr);
+
+    /**
+     * Check the integrity of packages
+     * 
+     * @param storageBufferArr The storage buffer array
+     * @param inputBufferArr The input buffer array
+     * @return If the integrity of the package is 
+     * broken, then the function returns false
+     */
+    bool checkTheIntegrityOfPackages(std::vector<std::string>& storageBufferArr,
+            std::vector<std::string>& inputBufferArr);
+    
+    /**
+     * Count the commas in a line
+     * 
+     * @param str The string
+     * @return The number commas in a string
+     */
+    int countTheCommasInString(std::string str);
 
     /**
      * Sets the GGA buffer array

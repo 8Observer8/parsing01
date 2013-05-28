@@ -6,7 +6,7 @@
  */
 
 #include "newtestclass10.h"
-
+#include "../Parsing.h"
 
 CPPUNIT_TEST_SUITE_REGISTRATION(newtestclass10);
 
@@ -22,34 +22,122 @@ void newtestclass10::setUp() {
 void newtestclass10::tearDown() {
 }
 
-void newtestclass10::testStorage() {
-    std::vector<std::string> inputBufferArr;
-    inputBufferArr.push_back("four");
-    inputBufferArr.push_back("five");
-    inputBufferArr.push_back("six");
-    
+void newtestclass10::testStorage_storageBufferIncomplete() {
     std::vector<std::string> resultBufferArr;
-    resultBufferArr.push_back("one");
-    resultBufferArr.push_back("two");
-    resultBufferArr.push_back("three");
+    resultBufferArr.push_back("$GPGGA,160023.69,1130.832,N,04344.045,E,1,04,2.6,100.00,M,-33.9,M,,0000*7C");
+    resultBufferArr.push_back("$GPGLL,1130.915,N,04344.052,E,160024.70,A*0C");
+    resultBufferArr.push_back("$GPGGA,160025.71,1130.998,N,04344");
     resultBufferArr.push_back("");
 
-    std::vector<std::string> expectedBufferArr;
-    expectedBufferArr.push_back("one");
-    expectedBufferArr.push_back("two");
-    expectedBufferArr.push_back("three");
-    expectedBufferArr.push_back("four");
-    expectedBufferArr.push_back("five");
-    expectedBufferArr.push_back("six");
-    expectedBufferArr.push_back("");
-    if (expectedBufferArr.size() == resultBufferArr.size()) {
+    std::vector<std::string> inputBufferArr;
+    inputBufferArr.push_back(".060,E,1,04,2.7,100.00,M,-33.9,M,,0000*74");
+    inputBufferArr.push_back("$GPRMC,160026.73,A,1131.081,N,04344.067,E,300.00,4.96,110213,0.0,E*5A");
+    inputBufferArr.push_back("$GPRMC,160027.74,A,1131.164,N,04344.074,E,300.00,4.96,110213,0.0,E*54");
 
+    std::vector<std::string> expectedBufferArr;
+    expectedBufferArr.push_back("$GPGGA,160023.69,1130.832,N,04344.045,E,1,04,2.6,100.00,M,-33.9,M,,0000*7C");
+    expectedBufferArr.push_back("$GPGLL,1130.915,N,04344.052,E,160024.70,A*0C");
+    expectedBufferArr.push_back("$GPGGA,160025.71,1130.998,N,04344.060,E,1,04,2.7,100.00,M,-33.9,M,,0000*74");
+    expectedBufferArr.push_back("$GPRMC,160026.73,A,1131.081,N,04344.067,E,300.00,4.96,110213,0.0,E*5A");
+    expectedBufferArr.push_back("$GPRMC,160027.74,A,1131.164,N,04344.074,E,300.00,4.96,110213,0.0,E*54");
+    
+    CParsing cparsing;
+    bool successful = cparsing.storage(resultBufferArr, inputBufferArr);
+    
+    CPPUNIT_ASSERT(successful);
+
+    if (expectedBufferArr.size() == resultBufferArr.size()) {
+        for (unsigned int i = 0; i < expectedBufferArr.size();i++) {
+            CPPUNIT_ASSERT_EQUAL(expectedBufferArr[i], resultBufferArr[i]);
+        }
     } else {
-        CPPUNIT_ASSERT(true);
+        CPPUNIT_ASSERT(false);
     }
 }
 
-void newtestclass10::testFailedMethod() {
-    CPPUNIT_ASSERT(false);
+void newtestclass10::testStorage_inputBufferIsIncomplete() {
+    std::vector<std::string> resultBufferArr;
+    resultBufferArr.push_back("$GPGGA,160023.69,1130.832,N,04344.045,E,1,04,2.6,100.00,M,-33.9,M,,0000*7C");
+    resultBufferArr.push_back("$GPGLL,1130.915,N,04344.052,E,160024.70,A*0C");
+    resultBufferArr.push_back("$GPGGA,160025.71,1130.998,N,04344.060,E,1,04,2.7,100.00,M,-33.9,M,,0000*74");
+
+    std::vector<std::string> inputBufferArr;
+    inputBufferArr.push_back("$GPRMC,160026.73,A,1131.081,N,04344.067,E,300.00,4.96,110213,0.0,E*5A");
+    inputBufferArr.push_back("$GPRMC,160027.74,A,1131.164,N,04344.");
+    inputBufferArr.push_back("");
+
+    std::vector<std::string> expectedBufferArr;
+    expectedBufferArr.push_back("$GPGGA,160023.69,1130.832,N,04344.045,E,1,04,2.6,100.00,M,-33.9,M,,0000*7C");
+    expectedBufferArr.push_back("$GPGLL,1130.915,N,04344.052,E,160024.70,A*0C");
+    expectedBufferArr.push_back("$GPGGA,160025.71,1130.998,N,04344.060,E,1,04,2.7,100.00,M,-33.9,M,,0000*74");
+    expectedBufferArr.push_back("$GPRMC,160026.73,A,1131.081,N,04344.067,E,300.00,4.96,110213,0.0,E*5A");
+    expectedBufferArr.push_back("$GPRMC,160027.74,A,1131.164,N,04344.");
+    expectedBufferArr.push_back("");
+    
+    CParsing cparsing;
+    bool successful = cparsing.storage(resultBufferArr, inputBufferArr);
+
+    CPPUNIT_ASSERT(successful);
+
+    if (expectedBufferArr.size() == resultBufferArr.size()) {
+        for (unsigned int i = 0; i < expectedBufferArr.size();i++) {
+            CPPUNIT_ASSERT_EQUAL(expectedBufferArr[i], resultBufferArr[i]);
+        }
+    } else {
+        CPPUNIT_ASSERT(false);
+    }
 }
 
+void newtestclass10::testStorage_inputBufferAndStorageBufferIsIncomplete() {
+    std::vector<std::string> resultBufferArr;
+    resultBufferArr.push_back("$GPGGA,160023.69,1130.832,N,04344.045,E,1,04,2.6,100.00,M,-33.9,M,,0000*7C");
+    resultBufferArr.push_back("$GPGLL,1130.915,N,04344.052,E,160024.70,A*0C");
+    resultBufferArr.push_back("$GPGGA,160025.71,1130.998,N,04344.060,E");
+    resultBufferArr.push_back("");
+
+    std::vector<std::string> inputBufferArr;
+    inputBufferArr.push_back(",1,04,2.7,100.00,M,-33.9,M,,0000*74");
+    inputBufferArr.push_back("$GPRMC,160026.73,A,1131.081,N,04344.067,E,300.00,4.96,110213,0.0,E*5A");
+    inputBufferArr.push_back("$GPRMC,160027.74,A,1131.164,N,04344.");
+    inputBufferArr.push_back("");
+
+    std::vector<std::string> expectedBufferArr;
+    expectedBufferArr.push_back("$GPGGA,160023.69,1130.832,N,04344.045,E,1,04,2.6,100.00,M,-33.9,M,,0000*7C");
+    expectedBufferArr.push_back("$GPGLL,1130.915,N,04344.052,E,160024.70,A*0C");
+    expectedBufferArr.push_back("$GPGGA,160025.71,1130.998,N,04344.060,E,1,04,2.7,100.00,M,-33.9,M,,0000*74");
+    expectedBufferArr.push_back("$GPRMC,160026.73,A,1131.081,N,04344.067,E,300.00,4.96,110213,0.0,E*5A");
+    expectedBufferArr.push_back("$GPRMC,160027.74,A,1131.164,N,04344.");
+    expectedBufferArr.push_back("");
+    
+    CParsing cparsing;
+    bool successful = cparsing.storage(resultBufferArr, inputBufferArr);
+
+    CPPUNIT_ASSERT(successful);
+
+    if (expectedBufferArr.size() == resultBufferArr.size()) {
+        for (unsigned int i = 0; i < expectedBufferArr.size();i++) {
+            CPPUNIT_ASSERT_EQUAL(expectedBufferArr[i], resultBufferArr[i]);
+        }
+    } else {
+        CPPUNIT_ASSERT(false);
+    }
+}
+
+void newtestclass10::failedTestStorage_noContinuationOfThePackageForTheStorageBuffer() {
+    std::vector<std::string> resultBufferArr;
+    resultBufferArr.push_back("$GPGGA,160023.69,1130.832,N,04344.045,E,1,04,2.6,100.00,M,-33.9,M,,0000*7C");
+    resultBufferArr.push_back("$GPGLL,1130.915,N,04344.052,E,160024.70,A*0C");
+    resultBufferArr.push_back("$GPGGA,160025.71,1130.998,N,04344.060,E,1,");
+    resultBufferArr.push_back("");
+
+    std::vector<std::string> inputBufferArr;
+    inputBufferArr.push_back("$GPRMC,160026.73,A,1131.081,N,04344.067,E,300.00,4.96,110213,0.0,E*5A");
+    inputBufferArr.push_back("$GPRMC,160027.74,A,1131.164,N,04344.");
+    inputBufferArr.push_back("");
+
+    
+    CParsing cparsing;
+    bool successful = cparsing.storage(resultBufferArr, inputBufferArr);
+
+    CPPUNIT_ASSERT(!successful);
+}
